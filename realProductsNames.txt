@@ -1,0 +1,4 @@
+eglibc:glibc
+krb5:kerberos
+pcre3:perl_compatible_regular_expression_library
+libkrb5-dbg:libkrb5support0

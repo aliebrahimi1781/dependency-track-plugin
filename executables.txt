@@ -1,0 +1,5 @@
+/usr/sbin/avahi-daemon
+/usr/sbin/lightdm
+/usr/bin/dig
+/usr/sbin/grub-install
+/usr/bin/cheese
