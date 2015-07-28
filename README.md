@@ -1,6 +1,8 @@
 # dependency-track-plugin
 A Dependency-Track Plugin (OWASP)
 
+![plugin](Docs/plugin.png)
+
 ## A. PRELIMINARIES
 
 **All actions of this part will be made only once !**
@@ -10,12 +12,12 @@ A Dependency-Track Plugin (OWASP)
 sudo apt-get update
 sudo apt-get upgrade
 ```
-#### Installing OpenJDK :
+##### Installing OpenJDK :
 ```
 sudo apt-get install openjdk-7-jdk openjdk-7-jre
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 ```
-#### Installing Tomcat7 :
+##### Installing Tomcat7 :
 ```
 sudo apt-get install tomcat7 tomcat7-admin tomcat7-docs tomcat7-examples
 
@@ -23,7 +25,7 @@ sudo chown -R tomcat7:tomcat7 /var/lib/tomcat7/
 sudo chown -R tomcat7:tomcat7 /etc/tomcat7/
 sudo chown -R tomcat7:tomcat7 /usr/share/tomcat7
 ```
-#### Installing Maven :
+##### Installing Maven :
 ```
 sudo apt-get install maven
 ```
@@ -69,19 +71,19 @@ sudo /etc/init.d/tomcat7 start
 ```
 ## B. GETTING DEPENDENCIES OF SOME SOFTWARES
 
-##### B.1. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
+#### B.1. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
 For example :
 ```
 /usr/bin/dwp
 /usr/bin/dig
 ```
-##### B.2. Run the analyzing.
+#### B.2. Run the analyze.
 ```
 cd ~/dtrack/Plugin
 python2.7 Main.py
 ```
 The output file *program_info.json* will be created in the *Plugin/dependency-track* folder. It is a JSON file which contains all dependencies information that will be inserted in the Dependency-Track database.
-##### B.3. Copy the output file where the plugin will read
+#### B.3. Copy the output file where the plugin will read
 ```
 cd ~/dtrack
 
@@ -89,3 +91,15 @@ sudo cp Plugin/dependency-track/program_info.json \
 	/var/opt/dependency-track-pluggin/program_info.json
 ```
 ## C. INSERTING DEPENDENCIES INFORMATION IN DEPENDENCY-TRACK
+
+To insert dependencies in Dependency-Track, you just have to click on the *Settings --> Launch Plugin* button :
+
+![plugin](Docs/plugin.png)
+
+Enjoy :
+
+![dig](Docs/dig.PNG)
+
+Now you can improve the results manually, including *Vendor* fields that were not found in the CPE database.
+
+You can also edit the *License* field, but it is not necessary to search for CVE.
