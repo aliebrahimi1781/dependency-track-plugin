@@ -2,7 +2,9 @@ import sys
 sys.path.append('Components')
 from functions import *
 
+# The file with the path of dynamic executables you want to analyze.
 input = "executables.txt"
+# The outfile will contain all dependencies information.
 output = "dependency-track/program_info.json"
 
 program_info = {}
@@ -37,4 +39,5 @@ f.close()
 # Saving
 save(output,program_info)
 
+# Displaying
 displayProgramInfo(program_info)
