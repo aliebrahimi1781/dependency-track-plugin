@@ -7,7 +7,6 @@ import subprocess
 import os
 
 
-
 # ----------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -169,7 +168,6 @@ def getPacketsOfExecutable(executablePath):
         packets = []
 
         for lib in libs:
-            # cmd = "apt-file search {}".format(lib)
             cmd = 'apt-file search {} | grep "{}$" | sed -n 1p'.format(lib, lib)
             ret = executeCommand(cmd)
 
@@ -569,7 +567,7 @@ def getVersionProgram(program):
             if version:
                 return version
 
-    # Sicth attempt
+    # Sixth attempt
     tmpFile = "tmpPluggin"
     cmd = "{} -version > {}".format(program, tmpFile)
     executeCommand(cmd)
@@ -599,12 +597,12 @@ def getCopyrightProduct(product):
 
     pattern1 = "^{}$".format(preparePattern(product).encode("utf-8"))
     pattern2 = "{}[.-][0-9]+".format(preparePattern(product).encode("utf-8"))
-    pattern3 = "{}[.-]+".format(preparePattern(product).encode("utf-8"))
+    # pattern3 = "{}[.-]+".format(preparePattern(product).encode("utf-8"))
 
     patterns = []
     patterns.append(pattern1)
     patterns.append(pattern2)
-    #patterns.append(pattern3)
+    # patterns.append(pattern3)
 
 
     for file in os.listdir(folder):
@@ -632,12 +630,12 @@ def getCopyrightPacket(packet):
 
     pattern4 = "^{}$".format(preparePattern(packet).encode("utf-8"))
     pattern5 = "{}[.-][0-9]+".format(preparePattern(packet).encode("utf-8"))
-    pattern6 = "{}[.-]+".format(preparePattern(packet).encode("utf-8"))
+    # pattern6 = "{}[.-]+".format(preparePattern(packet).encode("utf-8"))
 
     patterns = []
     patterns.append(pattern4)
     patterns.append(pattern5)
-    #patterns.append(pattern6)
+    # patterns.append(pattern6)
 
     for file in os.listdir(folder):
 
@@ -758,5 +756,3 @@ def displayProgramInfo(program_info):
 
 # ----------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------------
-
-
