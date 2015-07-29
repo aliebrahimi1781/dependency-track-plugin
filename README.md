@@ -51,7 +51,7 @@ cp Plugin/dependency-track/sources/page.jsp \
 cp Plugin/dependency-track/sources/ApplicationController.java \
 	dependency-track-master/src/main/java/org/owasp/dependencytrack/controller/ApplicationController.java
 ```
-### A.4. Compiling (pluged) Dependency-Track
+### A.4. Compiling and starting (pluged) Dependency-Track
 ```
 cd ~/dtrack/dependency-track-master
 mvn clean -Dmaven.compiler.failOnError=false package
