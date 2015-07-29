@@ -69,6 +69,8 @@ sudo java -jar addNewLicenses.jar /usr/share/tomcat7/dependency-track/ removeAll
 removeAllTables=[Yes|No]
 sudo /etc/init.d/tomcat7 start
 ```
+(*/usr/share/tomcat7/dependency-track/* is the folder containing the H2 database *database.h2.db* managed by Dependency-Track).
+
 ## B. GETTING DEPENDENCIES OF SOME SOFTWARES
 
 #### B.1. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
