@@ -7,6 +7,10 @@ A Dependency-Track Plugin (OWASP)
 
 **All actions of this part will be made only once !**
 
+The following commands are suitable for a 64 bits Ubuntu machine. If your machine is another system, you can easily adapt commands.
+
+Dependency-Track requires a Java servlet. I chose Tomcat7. If you want to choose another one, the commands must be changed accordingly.
+
 ### A.1. Installing a Java servlet (Tomcat) and Maven
 ```
 sudo apt-get update
