@@ -70,7 +70,7 @@ removeAllTables=[Yes|No]
 sudo /etc/init.d/tomcat7 start
 ```
 * */usr/share/tomcat7/dependency-track/* is the folder containing the H2 database *database.h2.db* managed by Dependency-Track.
-* *removeAllTables=Yes* will reinitialize the Dependency-Track database.
+* *removeAllTables=Yes* will reinitialize the Dependency-Track database and remove the initial licenses.
 
 ## B. GETTING DEPENDENCIES OF SOME SOFTWARES
 
