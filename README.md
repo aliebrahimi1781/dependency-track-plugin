@@ -20,10 +20,7 @@ export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 ##### Installing Tomcat7 :
 ```
 sudo apt-get install tomcat7 tomcat7-admin tomcat7-docs tomcat7-examples
-
-sudo chown -R tomcat7:tomcat7 /var/lib/tomcat7/
-sudo chown -R tomcat7:tomcat7 /etc/tomcat7/
-sudo chown -R tomcat7:tomcat7 /usr/share/tomcat7
+sudo chown -R tomcat7:tomcat7 /var/lib/tomcat7/ /etc/tomcat7/ /usr/share/tomcat7
 ```
 ##### Installing Maven :
 ```
