@@ -16,7 +16,7 @@ all_CPE = getObjectFromJson(input)
 for file in os.listdir(folder):
 
     filename = "{}{}".format(folder, file)
-    print "{} is parsing. Wait please...".format(filename)
+    print ("{} is parsing. Wait please...".format(filename))
 
     f = openFile(filename,'r')
 

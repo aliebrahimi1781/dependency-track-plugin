@@ -16,9 +16,9 @@ def openFile(file, mode):
     try:
         f = open(file, mode)
     except IOError as e:
-        print "{} : IOError ({}) : {}".format(e.filename, e.errno, e.strerror)
+        print ("{} : IOError ({}) : {}".format(e.filename, e.errno, e.strerror))
     except:
-        print "Unexpected error : {}\nThis script stopped.".format(sys.exc_info()[0])
+        print ("Unexpected error : {}\nThis script stopped.".format(sys.exc_info()[0]))
     else:
         return f
 
@@ -51,10 +51,10 @@ def save(filename, obj):
             with open(filename, 'w') as f:
                 f.write(s)
         except IOError as e:
-            print "{} : IOError ({}) : {}".format(e.filename, e.errno, e.strerror)
+            print ("{} : IOError ({}) : {}".format(e.filename, e.errno, e.strerror))
             return False
         except:
-            print "Unexpected error : {}\nThis script stopped.".format(sys.exc_info()[0])
+            print ("Unexpected error : {}\nThis script stopped.".format(sys.exc_info()[0]))
             return False
         else:
             return True
@@ -108,7 +108,7 @@ def executeCommand(cmd):
         with open(os.devnull, 'wb', 0) as DEVNULL:
             ret = subprocess.check_output(cmd, stderr=DEVNULL, shell=True)
     except subprocess.CalledProcessError as e:
-        # print "{} : CalledProcessError ({})".format(e.cmd, e.returncode)
+        # print ("{} : CalledProcessError ({})".format(e.cmd, e.returncode))
         return None
     except:
         return None
@@ -611,10 +611,10 @@ def getCopyrightProduct(product):
 
             if re.search(patterns[i], file, re.IGNORECASE):
                 copyright = "/usr/share/doc/{}/copyright".format(file)
-                # print "pattern : {}".format(i+1)
-                # print "file : {}".format(file)
-                # print "product : {}".format(product)
-                # print "copyright : {}".format(copyright)
+                # print ("pattern : {}".format(i+1))
+                # print ("file : {}".format(file))
+                # print ("product : {}".format(product))
+                # print ("copyright : {}".format(copyright))
                 return copyright
 
     return None
@@ -643,10 +643,10 @@ def getCopyrightPacket(packet):
 
             if re.search(patterns[i], file, re.IGNORECASE):
                 copyright = "/usr/share/doc/{}/copyright".format(file)
-                # print "pattern : {}".format(i+4)
-                # print "file : {}".format(file)
-                # print "packet : {}".format(packet)
-                # print "copyright : {}".format(copyright)
+                # print ("pattern : {}".format(i+4))
+                # print ("file : {}".format(file))
+                # print ("packet : {}".format(packet))
+                # print ("copyright : {}".format(copyright))
                 return copyright
 
     return None
@@ -666,7 +666,7 @@ def getCopyright(product, packet):
     if copyright:
         return copyright
     else:
-        print "No copyright file for product : {} , package : {}".format(product, packet)
+        print ("No copyright file for product : {} , package : {}".format(product, packet))
         return None
 
 
@@ -700,9 +700,9 @@ def getLicense(product, packet):
             licenses = open(licenses, 'r')
             copyright = open(copyright, 'r')
         except IOError as e:
-            print "{} : IOError ({}) : {}".format(e.filename, e.errno, e.strerror)
+            print ("{} : IOError ({}) : {}".format(e.filename, e.errno, e.strerror))
         except:
-            print "Unexpected error : {}\nThis script stopped.".format(sys.exc_info()[0])
+            print ("Unexpected error : {}\nThis script stopped.".format(sys.exc_info()[0]))
         else:
 
             dictLicenses = json.loads(licenses.read())
@@ -734,24 +734,24 @@ def getLicense(product, packet):
 
 def displayProgramInfo(program_info):
     if program_info:
-        print "\nAll the collected information :\n"
+        print ("\nAll the collected information :\n")
         for program in program_info:
             components = program_info[program][0]
             version = program_info[program][1]
 
-            print "Program : {}".format(program)
-            print "\tVersion : {}".format(version)
+            print ("Program : {}".format(program))
+            print ("\tVersion : {}".format(version))
 
             for component in components:
-                print "\t\tProduct : {}".format(component[1])
-                print "\t\t\tVendor : {}".format(component[0])
-                print "\t\t\tVersion : {}".format(component[2])
-                print "\t\t\tLicense : {}".format(component[4])
-                print "\t\t\tLanguage : {}".format(component[3])
-        print "\nThe 'program_info.json' file with all the information, has been created. Now :\n"
-        print "1) Copy this file in the '/var/opt/dependency-track-pluggin/' folder."
-        print "2) Go to the Dependency-Track web interface : Settings --> Launch Plugin."
-        print "\nEnjoy !\n"
+                print ("\t\tProduct : {}".format(component[1]))
+                print ("\t\t\tVendor : {}".format(component[0]))
+                print ("\t\t\tVersion : {}".format(component[2]))
+                print ("\t\t\tLicense : {}".format(component[4]))
+                print ("\t\t\tLanguage : {}".format(component[3]))
+        print ("\nThe 'program_info.json' file with all the information, has been created. Now :\n")
+        print ("1) Copy this file in the '/var/opt/dependency-track-pluggin/' folder.")
+        print ("2) Go to the Dependency-Track web interface : Settings --> Launch Plugin.")
+        print ("\nEnjoy !\n")
 
 
 # ----------------------------------------------------------------------------------------------------------------------
