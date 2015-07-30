@@ -74,20 +74,25 @@ sudo /etc/init.d/tomcat7 start
 
 ## B. GETTING DEPENDENCIES OF SOME SOFTWARES
 
-#### B.1. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
+#### B.1. Requirements for finding information on dependencies.
+```
+sudo apt-get install apt-file dpkg
+```
+
+#### B.2. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
 For example :
 ```
 /usr/bin/dwp
 /usr/bin/dig
 ```
 To verify that everything works properly, do a first full test with just a dynamic executable with few dependencies (*/usr/sbin/accessdb* is a good one, if you have it).
-#### B.2. Run the analyze.
+#### B.3. Run the analyze.
 ```
 cd ~/dtrack/Plugin
 python2.7 Main.py
 ```
 The output file *program_info.json* will be created in the *Plugin/dependency-track* folder. It is a JSON file which contains all dependencies information that will be inserted in the Dependency-Track database.
-#### B.3. Copy the output file where the plugin will read
+#### B.4. Copy the output file where the plugin will read
 ```
 cd ~/dtrack
 
