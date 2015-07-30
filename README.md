@@ -30,10 +30,7 @@ sudo chown -R tomcat7:tomcat7 /var/lib/tomcat7/ /etc/tomcat7/ /usr/share/tomcat7
 ```
 sudo apt-get install maven
 ```
-
-### A.2. Dependency-Track requirements
-
-### A.3. Downloading Dependency-Track and Plugin sources
+### A.2. Downloading Dependency-Track and Plugin sources
 Dependency-Track sources : [Dependency-Track](https://github.com/stevespringett/dependency-track)
 
 Plugin sources : [This github](https://github.com/florent-fauvin/dependency-track-plugin)
@@ -46,7 +43,7 @@ cp path/to/Plugin ~/dtrack
 cp path/to/dependency-track-master ~/dtrack
 cd ~/dtrack
 ```
-### A.4. Including the Plugin sources in the Dependency-Track sources
+### A.3. Including the Plugin sources in the Dependency-Track sources
 ```
 cp Plugin/dependency-track/sources/page.jsp \
 	dependency-track-master/src/main/webapp/WEB-INF/views/templates/page.jsp
@@ -54,7 +51,7 @@ cp Plugin/dependency-track/sources/page.jsp \
 cp Plugin/dependency-track/sources/ApplicationController.java \
 	dependency-track-master/src/main/java/org/owasp/dependencytrack/controller/ApplicationController.java
 ```
-### A.5. Compiling and starting (pluged) Dependency-Track
+### A.4. Compiling and starting (pluged) Dependency-Track
 ```
 cd ~/dtrack/dependency-track-master
 mvn clean -Dmaven.compiler.failOnError=false package
@@ -64,7 +61,7 @@ sudo cp target/dtrack.war /var/lib/tomcat7/webapps/
 sudo /etc/init.d/tomcat7 start
 
 ```
-### A.6. Adding/Replacing licenses
+### A.5. Adding/Replacing licenses
 ```
 cd ~/dtrack/Plugin/dependency-track/licenses/
 
