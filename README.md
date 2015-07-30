@@ -121,7 +121,7 @@ You can also edit the *License* field, but it is not necessary to search for CVE
 
 This Dependency-Track Plugin is actually the combination of 2 modular programs, and each module can be tested and improved separately :
 * 1. The Python script "Main.py" **collects the dependencies information** (Vendor, Product, Version, License) and creates a JSON file with all these information.
-* 2. The plugin integrated in Dependency-Track reads the JSON file and **inserts these information in Dependency-Track database**.
+* 2. The plugin integrated in Dependency-Track reads the JSON file and **inserts these information in the Dependency-Track database**.
 
 A great consequence is that Dependency-Track can run on a machine specifically dedicated to the management of software dependencies :
 
