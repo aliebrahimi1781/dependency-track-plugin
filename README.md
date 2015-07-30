@@ -107,7 +107,7 @@ To insert dependencies in Dependency-Track, you just have to click on the *Setti
 
 ![plugin](Docs/plugin.png)
 
-The more programs have dependencies, the more this script will be long.
+The more programs have dependencies, the more this step will be long.
 
 Then, enjoy :
 
