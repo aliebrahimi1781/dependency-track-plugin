@@ -86,7 +86,8 @@ For example :
 /usr/bin/dwp
 /usr/bin/dig
 ```
-To verify that everything works properly, do a first full test with just a dynamic executable with few dependencies (*/usr/sbin/e2freefrag* is a good one, if you have it).
+* To verify that everything works properly, do a first full test with just a dynamic executable with few dependencies (*/usr/sbin/e2freefrag* is a good one, if you have it).
+* Anyway, I recommend for this first version of the plugin, to run it for 1 or 2 executables at a time, but no more.
 #### B.3. Run the analyze.
 ```
 cd ~/dtrack/Plugin
