@@ -86,7 +86,7 @@ For example :
 /usr/bin/dwp
 /usr/bin/dig
 ```
-To verify that everything works properly, do a first full test with just a dynamic executable with few dependencies (*/usr/sbin/accessdb* is a good one, if you have it).
+To verify that everything works properly, do a first full test with just a dynamic executable with few dependencies (*/usr/sbin/e2freefrag* is a good one, if you have it).
 #### B.3. Run the analyze.
 ```
 cd ~/dtrack/Plugin
