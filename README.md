@@ -18,17 +18,17 @@ sudo apt-get upgrade
 ```
 ##### Installing OpenJDK :
 ```
-sudo apt-get install openjdk-7-jdk openjdk-7-jre
+sudo apt-get -y install openjdk-7-jdk openjdk-7-jre
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 ```
 ##### Installing Tomcat7 :
 ```
-sudo apt-get install tomcat7 tomcat7-admin tomcat7-docs tomcat7-examples
+sudo apt-get -y install tomcat7 tomcat7-admin tomcat7-docs tomcat7-examples
 sudo chown -R tomcat7:tomcat7 /var/lib/tomcat7/ /etc/tomcat7/ /usr/share/tomcat7
 ```
 ##### Installing Maven :
 ```
-sudo apt-get install maven
+sudo apt-get -y install maven
 ```
 ### A.2. Downloading Dependency-Track and Plugin sources
 Dependency-Track sources : [Dependency-Track](https://github.com/stevespringett/dependency-track)
@@ -77,7 +77,7 @@ sudo /etc/init.d/tomcat7 start
 
 #### B.1. Requirements for finding information on dependencies.
 ```
-sudo apt-get install apt-file dpkg python2.7
+sudo apt-get -y install apt-file dpkg python2.7
 ```
 
 #### B.2. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
