@@ -7,9 +7,9 @@ A Dependency-Track Plugin (OWASP)
 
 **All actions of this part will be made only once !**
 
-The following commands are suitable for a 64 bits Ubuntu machine. If your machine is another system, you can easily adapt commands.
+The following commands are suitable for a *64 bits Ubuntu* machine. If your machine is another system, you can easily adapt commands.
 
-Dependency-Track requires a Java servlet. I chose Tomcat7. If you want to choose another one, the commands must be changed accordingly.
+Dependency-Track requires a Java servlet. I chose *Tomcat7*. If you want to choose another one, the commands must be changed accordingly.
 
 ### A.1. Dependency-Track requirements
 ```
@@ -116,7 +116,7 @@ You can also edit the *License* field, but it is not necessary to search for CVE
 ## D. NOTES
 
 This Dependency-Track Plugin is actually the combination of 2 modular programs, and each module can be tested and improved separately :
-* 1. The Python script "Main.py" **collects the dependencies information** (Vendor, Product, Version, License) and creates an JSON file with all these information.
+* 1. The Python script "Main.py" **collects the dependencies information** (Vendor, Product, Version, License) and creates a JSON file with all these information.
 * 2. The Java code included in "ApplicationController.java" read the JSON file and **inserts these information in Dependency-Track**.
 
 A great consequence is that Dependency-Track can run on a machine specifically dedicated to the management of software dependencies :
