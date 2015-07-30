@@ -76,7 +76,7 @@ sudo /etc/init.d/tomcat7 start
 
 #### B.1. Requirements for finding information on dependencies.
 ```
-sudo apt-get install apt-file dpkg
+sudo apt-get install apt-file dpkg python2.7
 ```
 
 #### B.2. Write in the *Plugin/executables.txt* file the path of dynamic executables you want to analyze.
