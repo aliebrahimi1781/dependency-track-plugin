@@ -80,6 +80,7 @@ For example :
 /usr/bin/dwp
 /usr/bin/dig
 ```
+To verify that everything works properly, do a first full test with a dynamic executable with few dependencies (*/usr/sbin/accessdb* is a good one, if you have it).
 #### B.2. Run the analyze.
 ```
 cd ~/dtrack/Plugin
