@@ -80,7 +80,7 @@ For example :
 /usr/bin/dwp
 /usr/bin/dig
 ```
-To verify that everything works properly, do a first full test with a dynamic executable with few dependencies (*/usr/sbin/accessdb* is a good one, if you have it).
+To verify that everything works properly, do a first full test with just a dynamic executable with few dependencies (*/usr/sbin/accessdb* is a good one, if you have it).
 #### B.2. Run the analyze.
 ```
 cd ~/dtrack/Plugin
@@ -107,3 +107,7 @@ Enjoy :
 Now you can improve the results manually, including *Vendor* fields that were not found in the CPE database.
 
 You can also edit the *License* field, but it is not necessary to search for CVE.
+
+## D. NOTES
+
+
