@@ -1,2 +1,3 @@
 xz-utils:tukaani
 libkrb5support0:mit
+gdbm:gnu
