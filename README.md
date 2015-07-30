@@ -110,4 +110,12 @@ You can also edit the *License* field, but it is not necessary to search for CVE
 
 ## D. NOTES
 
+This Dependency-Track Plugin is actually the combination of 2 modular programs, and each module can be tested and improved separately :
+1. The Python script "Main.py" **collects the dependencies information** (Vendor, Product, Version, License) and creates an JSON file with all these information.
+2. The Java code included in "ApplicationController.java" read the JSON file and **inserts these information in Dependency-Track**.
+
+A great consequence is that Dependency-Track can run on a machine specifically dedicated to the management of software dependencies :
+
+![management](Docs/management.png)
+
 
