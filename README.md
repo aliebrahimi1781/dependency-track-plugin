@@ -39,9 +39,10 @@ The following commands will be valid if the sources are put in a same folder, na
 You can obviously do otherwise, but the commands must be changed accordingly.
 ```
 mkdir ~/dtrack
-cp path/to/Plugin ~/dtrack
+cp path/to/dependency-track-plugin-master ~/dtrack
 cp path/to/dependency-track-master ~/dtrack
 cd ~/dtrack
+mv dependency-track-plugin-master Plugin
 ```
 ### A.3. Including the Plugin sources in the Dependency-Track sources
 ```
