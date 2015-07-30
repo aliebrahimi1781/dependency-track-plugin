@@ -91,6 +91,8 @@ To verify that everything works properly, do a first full test with just a dynam
 cd ~/dtrack/Plugin
 python2.7 Main.py
 ```
+The more programs have dependencies, the more this script will be long.
+
 The output file *program_info.json* will be created in the *Plugin/dependency-track* folder. It is a JSON file which contains all dependencies information that will be inserted in the Dependency-Track database.
 #### B.4. Copy the output file where the plugin will read
 ```
@@ -105,7 +107,9 @@ To insert dependencies in Dependency-Track, you just have to click on the *Setti
 
 ![plugin](Docs/plugin.png)
 
-Enjoy :
+The more programs have dependencies, the more this script will be long.
+
+Then, enjoy :
 
 ![dig](Docs/dig.PNG)
 
