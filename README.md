@@ -11,7 +11,7 @@ The following commands are suitable for a 64 bits Ubuntu machine. If your machin
 
 Dependency-Track requires a Java servlet. I chose Tomcat7. If you want to choose another one, the commands must be changed accordingly.
 
-### A.1. Installing a Java servlet (Tomcat) and Maven
+### A.1. Dependency-Track requirements
 ```
 sudo apt-get update
 sudo apt-get upgrade
