@@ -96,6 +96,7 @@ python2.7 Main.py
 The more programs have dependencies, the more this script will be long.
 
 The output file *program_info.json* will be created in the *Plugin/dependency-track* folder. It is a JSON file which contains all dependencies information that will be inserted in the Dependency-Track database.
+
 #### B.4. Copy the output file where the plugin will read
 ```
 cd ~/dtrack
