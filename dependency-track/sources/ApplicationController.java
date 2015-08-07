@@ -50,9 +50,11 @@ import java.util.Map;
 // Plugin imports
 import java.util.List;
 import org.owasp.dependencytrack.model.Library;
+import org.owasp.dependencytrack.model.Vulnerability;
+import org.owasp.dependencytrack.model.LibraryVersion;
 import org.owasp.dependencytrack.dao.ApplicationDao;
 import org.owasp.dependencytrack.service.LibraryVersionService;
-import org.owasp.dependencytrack.model.LibraryVersion;
+import org.owasp.dependencytrack.service.VulnerabilityService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.fileupload.disk.DiskFileItem;
@@ -557,16 +559,26 @@ public class ApplicationController extends AbstractController {
 	}
 
 	/**
-	 * The Plugin launching.
+	 * Plugin.
 	 * 
 	 * @return a String
 	 */
 	@RequiresPermissions("about")
 	@RequestMapping(value = "/plugin", method = RequestMethod.GET)
 	public String plugin() {
-
 		PLUGIN_MAIN();
+		return "aboutPage";
+	}
 
+	/**
+	 * Hierarchy.
+	 * 
+	 * @return a String
+	 */
+	@RequiresPermissions("about")
+	@RequestMapping(value = "/hierarchy", method = RequestMethod.GET)
+	public String hierarchy() {
+		HIERARCHY_MAIN();
 		return "aboutPage";
 	}
 
@@ -738,16 +750,15 @@ public class ApplicationController extends AbstractController {
 				Integer.parseInt(idLibraryVersion));
 	}
 
-	public void _LOGTEST(String str) {
-
-		String filePath = "/var/opt/dependency-track-pluggin/logtest.txt";
+public static void _writeInFile(String str, String filePath) {
 
 		Writer writer = null;
 
 		try {
 
-			writer = new FileWriter(filePath);
+			writer = new FileWriter(filePath, true);
 			writer.write(str);
+			writer.write('\n');
 
 		} catch (IOException e) {
 
@@ -767,7 +778,81 @@ public class ApplicationController extends AbstractController {
 			}
 
 		}
-
 	}
+
+	public static void _initializeFile(String filePath) {
+
+		Writer writer = null;
+
+		try {
+			writer = new FileWriter(filePath);
+		} catch (IOException e) {
+			System.err.println("Error writing the file : ");
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					System.err.println("Error closing the file : ");
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public static void _LOGTEST(String str) {
+		String filePath = "/var/opt/dependency-track-pluggin/logtest.txt";
+		_writeInFile(str, filePath);
+	}
+
+	public void HIERARCHY_MAIN() {
+
+		String output = "/var/opt/dependency-track-pluggin/gephi.csv";
+		_initializeFile(output);
+		_writeInFile("Source,Target", output);
+
+		String prefixApp = "app:";
+		String prefixDep = "dep:";
+
+		for (Application app : applicationService.listApplications()) {
+			// app : Application
+
+			String name = app.getName().toString();
+			// name : Application name
+
+			for (ApplicationVersion appvers : app.getVersions()) {
+				// appvers : ApplicationVersion
+
+				String version = appvers.getVersion().toString();
+				// version : Application version
+
+				for (LibraryVersion libvers : libraryVersionService
+						.getDependencies(appvers)) {
+					// libvers : LibraryVersion
+
+					String libversion = libvers.getLibraryversion().toString();
+					String libname = libvers.getLibrary().getLibraryname()
+							.toString();
+					// libversion: Library version ; libname : Library name
+
+					_writeInFile(prefixApp + name + ":" + version + ","
+							+ prefixDep + libname + ":" + libversion, output);
+
+					for (Vulnerability vulnerability : vulnerabilityService
+							.getVulnsForLibraryVersion(libvers)) {
+
+						String vulnname = vulnerability.getName().toString();
+
+						/* Writting in the file */
+						_writeInFile(prefixDep + libname + ":" + libversion
+								+ "," + vulnname, output);
+					}
+				}
+			}
+		}
+	}
+
+
 
 }
