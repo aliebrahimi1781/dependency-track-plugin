@@ -4,7 +4,7 @@ from functions import *
 
 # The file with the path of dynamic executables you want to analyze.
 input = "executables.txt"
-# The outfile will contain all dependencies information.
+# The output file will contain all dependencies information.
 output = "dependency-track/program_info.json"
 
 program_info = {}
@@ -16,7 +16,7 @@ for line in f:
 
     if line:
 
-        print ("{} is analyzing. Wait please...".format(program))
+        print "{} is analyzing. Wait please...".format(program)
 
         # Getting components
         components = getAllVendorProductVersionOfExecutable(program)
