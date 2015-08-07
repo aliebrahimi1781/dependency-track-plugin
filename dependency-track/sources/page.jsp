@@ -91,6 +91,13 @@
                         </li>
                     </shiro:hasPermission>
 
+		    <spring:message code="permissions.about" var="about"/>
+                    <shiro:hasPermission name="${about}">
+                        <li class="<c:if test="${param.content!='hierarchy'}">in</c:if>active">
+                            <a href="<c:url value="/hierarchy"/>">Export Hierarchy</a>
+                        </li>
+                    </shiro:hasPermission>
+
                 </ul>
             </li>
             <li class="divider-vertical"></li>
