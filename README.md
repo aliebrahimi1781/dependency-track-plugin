@@ -109,7 +109,7 @@ sudo cp Plugin/dependency-track/program_info.json \
 
 To use Dependency-Track, go to its web interface (admin/admin) : *http://localhost:8080/dtrack/login*.
 
-To insert dependencies in Dependency-Track, you just have to click on the *Settings --> Launch Plugin* button :
+To insert dependencies in Dependency-Track, you just have to click on the *Settings --> Import Dependencies* button :
 
 ![plugin](Docs/plugin.png)
 
