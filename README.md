@@ -137,7 +137,10 @@ A great consequence is that Dependency-Track can run on a machine specifically d
 
 The *Export Hierarchy* button will export the hierarchy dependencies in a CSV file : */var/opt/dependency-track-pluggin/gephi.csv*.
 
-This CSV file can be read by a interactive visualization and exploration platform, like **Gephi**.
+This CSV file can be read by a interactive visualization and exploration platform, like **Gephi**. In the two images below :
+* The applications are blue,
+* The components are green,
+* The CVE are red.
 
 ![management](Docs/detail.png)
 
