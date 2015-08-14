@@ -145,4 +145,3 @@ This CSV file can be read by a interactive visualization and exploration platfor
 ![management](Docs/detail.png)
 
 ![management](Docs/view.png)
-

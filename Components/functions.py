@@ -186,6 +186,116 @@ def getPacketsOfExecutable(executablePath):
 # ----------------------------------------------------------------------------------------------------------------------
 
 
+def getVersionOfPacket(packet, product):
+    ret = executeCommand("dpkg -p {} | grep Version".format(packet))  # apt-cache show ; dpkg -s # apt-cache policy
+
+    if ret:
+        version = ret.split(":")[1].strip()
+        if version:
+            version = re.split(r'\-.*ubuntu',version,flags=re.IGNORECASE)[0]
+            version = realFormatVersion(product, version)
+            return version
+        else:
+            return ""
+    else:
+        return ""
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+
+
+def formatVersion_1 (version) :
+    if version :
+        version = version.lower()
+        version_1 = re.split("[~\+\s]",version,flags=re.IGNORECASE)[0]
+        if version_1 :
+            return version_1.strip()
+        else:
+            return version.strip()
+    else :
+        return ""
+
+def formatVersion_2 (version) :
+    if version :
+        version_2 = re.sub(r'[\.\-%]', ":", version)
+        version_2 = re.sub(r'::', ":", version_2)
+        version_2 = re.sub(r':$', "", version_2)
+        version_2 = re.sub(r'\\', "", version_2)
+        if version_2 :
+            return version_2.strip()
+        else:
+            return version.strip()
+    else :
+        return ""
+
+def formatVersion_3 (version) :
+    if version :
+        version_3 = re.split("\_",version,flags=re.IGNORECASE)[0]
+        if version_3 :
+            return version_3.strip()
+        else:
+            return version.strip()
+    else :
+        return ""
+
+def formatVersion_4 (version) :
+    if version :
+        version_4 = re.split("_*[a-z]+",version,flags=re.IGNORECASE)[0]
+        version_4 = re.split(":[\.\-%]]",version_4,flags=re.IGNORECASE)[0]
+        if version_4 :
+            return version_4.strip()
+        else:
+            return version.strip()
+    else :
+        return ""
+
+def matchVersions(vCPE,v):
+    if vCPE and v:
+
+        vCPE_1 = formatVersion_1(vCPE)
+        v_1 = formatVersion_1(v)
+        vCPE_2 = formatVersion_2(vCPE_1)
+        v_2 = formatVersion_2(v_1)
+
+        if vCPE_2 == v_2:
+            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
+            print "\t-2-"
+            return vCPE_2
+
+        vCPE_3 = formatVersion_3(vCPE_2)
+        v_3 = formatVersion_3(v_2)
+
+        if vCPE_3 == v_3:
+            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
+            print "\t-3-"
+            return vCPE_3
+
+        vCPE_24 = formatVersion_4(vCPE_2)
+        v_24 = formatVersion_4(v_2)
+
+        if vCPE_24 == v_24:
+            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
+            print "\t-24-"
+            return vCPE_24
+
+        vCPE_34 = formatVersion_4(vCPE_3)
+        v_34 = formatVersion_4(v_3)
+
+        if vCPE_34 == v_34:
+            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
+            print "\t-34-"
+            return vCPE_34
+
+    else:
+        print "\tAucune version matchee : {}".format(v)
+        return False
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+
+
 def getVendorProductVersionOfProductAndVersion(ProductVersion):
     if ProductVersion and isinstance(ProductVersion, list) and len(ProductVersion) == 2 \
             and ProductVersion[0]:
@@ -201,48 +311,56 @@ def getVendorProductVersionOfProductAndVersion(ProductVersion):
             l = CPE_dictionary[product]
             vendor = l[0][0]
             for m in l:
-                if m[2] == version:
+                v = matchVersions(m[2],version)
+                if v:
                     return m
 
-        # libpangoft2-1.0
-        productTmp = re.split("-[0-9]+$", product)[0]
-        if productTmp in CPE_dictionary:
-            l = CPE_dictionary[productTmp]
-            vendor = l[0][0]
-            for m in l:
-                if m[2] == version:
-                    return m
+        if re.search(r'[\-\.\d]', product, re.IGNORECASE):
 
-        # libpangoft2-1
-        productTmp = re.split("\.[0-9]+$", productTmp)[0]
-        if productTmp in CPE_dictionary:
-            l = CPE_dictionary[productTmp]
-            vendor = l[0][0]
-            for m in l:
-                if m[2] == version:
-                    return m
+            # libpangoft2-1.0
+            productTmp = re.split("-[0-9]+$", product)[0]
+            if productTmp in CPE_dictionary:
+                l = CPE_dictionary[productTmp]
+                vendor = l[0][0]
+                for m in l:
+                    v = matchVersions(m[2],version)
+                    if v:
+                        return m
 
-        # libpangoft2
-        productTmp = re.split("-[0-9]+$", productTmp)[0]
-        if productTmp in CPE_dictionary:
-            l = CPE_dictionary[productTmp]
-            vendor = l[0][0]
-            for m in l:
-                if m[2] == version:
-                    return m
+            # libpangoft2-1
+            productTmp = re.split("\.[0-9]+$", productTmp)[0]
+            if productTmp in CPE_dictionary:
+                l = CPE_dictionary[productTmp]
+                vendor = l[0][0]
+                for m in l:
+                    v = matchVersions(m[2],version)
+                    if v:
+                        return m
 
-        # libpangoft
-        productTmp = re.split("[0-9]+$", productTmp)[0]
-        if productTmp in CPE_dictionary:
-            l = CPE_dictionary[productTmp]
-            vendor = l[0][0]
-            for m in l:
-                if m[2] == version:
-                    return m
+            # libpangoft2
+            product = re.split("-[0-9]+$", productTmp)[0]
+            if product in CPE_dictionary:
+                l = CPE_dictionary[product]
+                vendor = l[0][0]
+                for m in l:
+                    v = matchVersions(m[2],version)
+                    if v:
+                        return m
 
+            # libpangoft
+            productTmp = re.split("[0-9]+$", product)[0]
+            if productTmp in CPE_dictionary:
+                l = CPE_dictionary[productTmp]
+                vendor = l[0][0]
+                for m in l:
+                    v = matchVersions(m[2],version)
+                    if v:
+                        return m
 
         if not vendor:
             vendor = getVendorManually(product)
+
+        version = formatVersion_1(version)
 
         return [vendor, product, version]
 
@@ -507,25 +625,6 @@ def getProductOfPacket(packet):
             return packet
     else:
         return packet
-
-
-# ----------------------------------------------------------------------------------------------------------------------
-# ----------------------------------------------------------------------------------------------------------------------
-
-
-def getVersionOfPacket(packet, product):
-    ret = executeCommand("dpkg -p {} | grep Version".format(packet))  # apt-cache show ; dpkg -s # apt-cache policy
-
-    if ret:
-        version = ret.split(":")[1].strip()
-        if version:
-            version = version.split("+")[0].split("-")[0]
-            version = realFormatVersion(product, version)
-            return version
-        else:
-            return ""
-    else:
-        return ""
 
 
 # ----------------------------------------------------------------------------------------------------------------------

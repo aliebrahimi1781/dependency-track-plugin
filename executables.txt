@@ -1,2 +1,1 @@
-/usr/bin/dwp
-/usr/bin/dig
+/usr/bin/cheese
