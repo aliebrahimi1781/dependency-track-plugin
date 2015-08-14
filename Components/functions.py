@@ -259,36 +259,27 @@ def matchVersions(vCPE,v):
         v_2 = formatVersion_2(v_1)
 
         if vCPE_2 == v_2:
-            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
-            print "\t-2-"
             return vCPE_2
 
         vCPE_3 = formatVersion_3(vCPE_2)
         v_3 = formatVersion_3(v_2)
 
         if vCPE_3 == v_3:
-            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
-            print "\t-3-"
             return vCPE_3
 
         vCPE_24 = formatVersion_4(vCPE_2)
         v_24 = formatVersion_4(v_2)
 
         if vCPE_24 == v_24:
-            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
-            print "\t-24-"
             return vCPE_24
 
         vCPE_34 = formatVersion_4(vCPE_3)
         v_34 = formatVersion_4(v_3)
 
         if vCPE_34 == v_34:
-            print "\tVersion à matcher :  {}  {}".format(vCPE,v)
-            print "\t-34-"
             return vCPE_34
 
     else:
-        print "\tAucune version matchee : {}".format(v)
         return False
 
 
@@ -652,7 +643,7 @@ def getVersionProgram(program):
     if ret:
         ret = ret.split('\n')[0]
         if ret:
-            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*"
+            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*[.-]*[0-9]*"
             version = getPattern(ret, pattern)
             if version:
                 return version
@@ -663,7 +654,7 @@ def getVersionProgram(program):
     if ret:
         ret = ret.split('\n')[0]
         if ret:
-            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*"
+            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*[.-]*[0-9]*"
             version = getPattern(ret, pattern)
             if version:
                 return version
@@ -680,7 +671,7 @@ def getVersionProgram(program):
         return None
     else:
         if ret:
-            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*"
+            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*[.-]*[0-9]*"
             version = getPattern(ret, pattern)
             if version:
                 return version
@@ -697,7 +688,7 @@ def getVersionProgram(program):
         return None
     else:
         if ret:
-            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*"
+            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*[.-]*[0-9]*"
             version = getPattern(ret, pattern)
             if version:
                 return version
@@ -714,7 +705,7 @@ def getVersionProgram(program):
         return None
     else:
         if ret:
-            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*"
+            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*[.-]*[0-9]*"
             version = getPattern(ret, pattern)
             if version:
                 return version
@@ -731,7 +722,7 @@ def getVersionProgram(program):
         return None
     else:
         if ret:
-            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*"
+            pattern = "[0-9][.-]*[0-9]*[.-]*[0-9]*[.-]*[0-9]*"
             version = getPattern(ret, pattern)
             if version:
                 return version
@@ -763,10 +754,6 @@ def getCopyrightProduct(product):
 
             if re.search(patterns[i], file, re.IGNORECASE):
                 copyright = "/usr/share/doc/{}/copyright".format(file)
-                # print "pattern : {}".format(i+1)
-                # print "file : {}".format(file)
-                # print "product : {}".format(product)
-                # print "copyright : {}".format(copyright)
                 return copyright
 
     return None
@@ -795,10 +782,6 @@ def getCopyrightPacket(packet):
 
             if re.search(patterns[i], file, re.IGNORECASE):
                 copyright = "/usr/share/doc/{}/copyright".format(file)
-                # print "pattern : {}".format(i+4)
-                # print "file : {}".format(file)
-                # print "packet : {}".format(packet)
-                # print "copyright : {}".format(copyright)
                 return copyright
 
     return None
@@ -902,7 +885,7 @@ def displayProgramInfo(program_info):
                 print "\t\t\tLanguage : {}".format(component[3])
         print "\nThe 'program_info.json' file with all the information, has been created. Now :\n"
         print "1) Copy this file in the '/var/opt/dependency-track-pluggin/' folder."
-        print "2) Go to the Dependency-Track web interface : Settings --> Launch Plugin."
+        print "2) Go to the Dependency-Track web interface : Settings --> Import Dependencies."
         print "\nEnjoy !\n"
 
 
